@@ -8,3 +8,5 @@ glfonts is a minimalist font renderer intended for "embedded" applications such 
 ### Non-goals
 - Antialiasing and subpixel rendering, though this may change in the future
 - Fontconfig and XLFD support
+### License
+- glfonts is released in the public domain.
