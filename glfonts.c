@@ -1,6 +1,8 @@
 #include <errno.h>
 #include <stddef.h>
+#include <stdint.h>
 #include <wchar.h>
+
 
 #include <GL/gl.h>
 #include <EGL/egl.h>
@@ -11,8 +13,8 @@
 
 #include "glfonts.h"
 
-int glfonts_init_lib(FT_Library *lib) {
-	int err;
+int32_t glfonts_init_lib(FT_Library *lib) {
+	int32_t err;
 
 	if((err = FT_Init_FreeType(lib)))
 		return err;
@@ -20,9 +22,9 @@ int glfonts_init_lib(FT_Library *lib) {
 	return 0;
 }
 
-int glfonts_init_font(FT_Library lib, struct glfonts_font *font, const char **filenames, unsigned int num_faces, FT_F26Dot6 size_x, FT_F26Dot6 size_y, FT_UInt dpi_x, FT_UInt dpi_y) {
-	int err;
-	unsigned int i;
+int32_t glfonts_init_font(FT_Library lib, struct glfonts_font *font, const char **filenames, uint32_t num_faces, FT_F26Dot6 size_x, FT_F26Dot6 size_y, FT_UInt dpi_x, FT_UInt dpi_y) {
+	int32_t err;
+	uint32_t i;
 
 	font->num_faces = num_faces;
 
@@ -41,7 +43,7 @@ int glfonts_init_font(FT_Library lib, struct glfonts_font *font, const char **fi
 }
 
 void glfonts_release_font(struct glfonts_font *font) {
-	unsigned int i;
+	uint32_t i;
 	for(i = 0; i < font->num_faces; ++i) {
 		FT_Done_Face(font->faces[i]);
 	}
@@ -52,9 +54,9 @@ void glfonts_release_lib(FT_Library lib) {
 	FT_Done_FreeType(lib);
 }
 
-int glfonts_display_string(FT_Library lib, struct glfonts_font *font, const wchar_t *str, GLint x, GLint y, GLuint rgba) {
-        int err;
-	unsigned int i, j;
+int32_t glfonts_display_string(FT_Library lib, struct glfonts_font *font, const wchar_t *str, GLint x, GLint y, GLuint rgba) {
+        int32_t err;
+	uint32_t i, j;
         FT_UInt glyph_index;
 	FT_Bitmap flipped_ft_bitmap;
 	GLfloat width, height, descent, advance;
