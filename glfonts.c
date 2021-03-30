@@ -2,15 +2,11 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <wchar.h>
-
-
 #include <GL/gl.h>
 #include <EGL/egl.h>
-
 #include <ft2build.h>
 #include FT_FREETYPE_H
 #include FT_BITMAP_H
-
 #include "glfonts.h"
 
 int32_t glfonts_init_lib(FT_Library *lib) {
